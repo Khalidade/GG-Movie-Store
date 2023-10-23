@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Movie>
+
+@{
+	ViewData["Title"] = "list of Movies";
+}
+
+
+   
+
+<div class="text-white  "  style="max-width: 100%">
+	@foreach (var item in Model)
+			{
+
+		<div class="row itms itemcont">
+			
+			@*<div class="col-md-4 col-xs-6 col-sm-6 col-lg-4">
+				<div class="movie-card bxs3" data-movie="IT3">
+					<div class="movie-card__overlay"></div>
+					<div class="movie-card__share">
+						<button class="movie-card__icon">
+							<i class="fa fa-heart"><img src="@item.ImageUrl" class="img-fluid" /></i>
+						</button>
+						@*<button class="movie-card__icon">
+							<i class="fa fa-star"></i>
+						</button>
+						<button class="movie-card__icon">
+							<i class="fa fa-tv"></i>
+						</button>*@
+					@*</div>
+					<div class="movie-card__content">
+						<div class="movie-card__header">
+							<h1 class="movie-card__title">Something Item</h1>
+							<h4 class="movie-card__info">(2019) Sci-Fi, Thriller</h4>
+						</div>
+						<p class="movie-card__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sollicitudin, elit in aliquet tincidunt, augue elit fermentum augue. Donec.</p>
+						<button class="btn btn-outline movie-card__button" type="button">Details</button>
+					</div>
+				</div>
+			</div>*@ 
+			<div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 " style="width: 100%">
+				<div class="movie-card bxs4" data-movie="IT1">
+					<div class="movie-card__overlay"></div>
+					<div class="movie-card__share">
+						
+						<button class="movie-card__icon" >
+							<i class="fa fa-tv"><img src="@item.ImageUrl" class="img-fluid movie-image" style=""/></i>
+						</button>
+					</div>
+					<div class="movie-card__content">
+						<div class="movie-card__header">
+							<h1 class="movie-card__title">@item.Name</h1>
+							<h4 class="movie-card__info">@item.MovieCategory</h4>
+						</div>
+						<p class="movie-card__desc">@item.Description</p>
+						<div class="card-footer">
+							<b>
+								Status: @if (DateTime.Now >= item.StartDate && DateTime.Now <= item.EndDate)
+								{
+									<span class="badge bg-success text-white"> AVAILABLE</span>
+								}
+								else if (DateTime.Now > item.EndDate)
+								{
+									<span class="badge bg-success text-white"> No Show</span>
+								}else
+								{
+									<span class="badge bg-primary text-white">UPCOING</span>
+								}
+							</b>
+							
+							<button class="btn btn-outline movie-card__button" type="button">Details</button>
+							<button class="btn btn-outline movie-card__button" type="button">Add to cart (Price @item.Price.ToString("c"))</button>
+						</div>
+					</div>
+				</div>
+			</div> 
+		</div>
+			}
+
+</div>
+
+	
+
